@@ -9,14 +9,13 @@ namespace XMLViewer
             var currentDirectory = Directory.GetCurrentDirectory();
             var dataFolder = Path.Combine(AppContext.BaseDirectory, "data");
 
-            //var products = ProductAggregator.AggregateProducts(dataFolder);
 
             var consolidator = new DataConsolidator();
             var products = consolidator.ConsolidateData(dataFolder);
 
             foreach (var product in products)
             {
-                Console.WriteLine($"ID: {product.Id}, Name: {product.Description.Names["pol"]}");
+                Console.WriteLine($"ID: {product.Id}");
                 Console.WriteLine($"Price: {product.Price.Gross} PLN");
                 Console.WriteLine($"URL: {product.Card.Url}");
 

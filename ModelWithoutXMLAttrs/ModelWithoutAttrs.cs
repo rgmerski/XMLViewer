@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XMLViewer.ModelWithoutXMLAtts;
 
 namespace XMLViewer.ModelWithoutXMLAttrs
 {
-    internal class ModelWithoutAttrs
+    internal class Product
     {
         public string Id { get; set; }
         public Price Price { get; set; }
@@ -18,22 +17,24 @@ namespace XMLViewer.ModelWithoutXMLAttrs
         public Unit Unit { get; set; }
         public Warranty Warranty { get; set; }
         public Card Card { get; set; }
-        public Description Description { get; set; }
+        public List<Description> ShortDescriptions { get; set; }
+        public List<Description> LongDescriptions { get; set; }
         public List<Image> Images { get; set; }
+        public List<Parameter> Parameters { get; set; }
     }
     
     public class Price
     {
-        public decimal Gross { get; set; }
-        public decimal Net { get; set; }
-        public decimal Vat { get; set; }
+        public decimal? Gross { get; set; }
+        public decimal? Net { get; set; }
+        public decimal? Vat { get; set; }
     }
 
     public class Srp
     {
-        public decimal Gross { get; set; }
-        public decimal Net { get; set; }
-        public decimal Vat { get; set; }
+        public decimal? Gross { get; set; }
+        public decimal? Net { get; set; }
+        public decimal? Vat { get; set; }
     }
 
     public class Size
@@ -82,9 +83,8 @@ namespace XMLViewer.ModelWithoutXMLAttrs
 
     public class Description
     {
-        public string ShortDescription { get; set; }
-        public string LongDescription { get; set; }
-        public Dictionary<string, string> Names { get; set; }
+        public string Text { get; set; }
+        public string Language { get; set; }
     }
 
     public class Image
@@ -95,5 +95,14 @@ namespace XMLViewer.ModelWithoutXMLAttrs
         public string Hash { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+    }
+
+
+    public class Parameter
+    {
+        public int? Id;
+        public string Lang;
+        public string Name;
+        public int? Priority;
     }
 }

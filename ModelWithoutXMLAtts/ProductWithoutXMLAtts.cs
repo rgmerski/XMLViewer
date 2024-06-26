@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace XMLViewer.ModelWithoutXMLAtts
 {
     public class Price
@@ -42,7 +42,7 @@ namespace XMLViewer.ModelWithoutXMLAtts
         public Size Size;
     }
 
-    public class Product
+    public class Product2
     {
         public Price Price;
         public Srp Srp;
@@ -84,7 +84,7 @@ namespace XMLViewer.ModelWithoutXMLAtts
 
     public class Products
     {
-        public List<Product> Product;
+        //public List<Product> Product;
         public string Currency;
         public string Iaiext;
         public string Language;
@@ -292,3 +292,4 @@ namespace XMLViewer.ModelWithoutXMLAtts
         public List<Products> Products;
     }
 }
+*/

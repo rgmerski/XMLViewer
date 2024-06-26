@@ -10,10 +10,11 @@ namespace XMLViewer.Data
 {
     internal class DataConsolidator
     {
-        public List<ModelWithoutAttrs> ConsolidateData(string dataFolder)
+        public List<Product> ConsolidateData(string dataFolder)
         {
-            var allProducts = new List<ModelWithoutAttrs>();
-            var filePaths = Directory.GetFiles(dataFolder, "*.xml");
+            var allProducts = new List<Product>();
+            //var filePaths = Directory.GetFiles(dataFolder, "*.xml");
+            var filePaths = Directory.GetFiles(dataFolder, "dostawca1plik2.xml");
 
             foreach (var filePath in filePaths)
             {
