@@ -16,12 +16,23 @@ namespace XMLViewer
             foreach (var product in products)
             {
                 Console.WriteLine($"ID: {product.Id}");
-                Console.WriteLine($"Price: {product.Price.Gross} PLN");
-
+                Console.WriteLine($"Price: {product.Price.Gross}");
                 Console.WriteLine("Images:");
                 foreach (var image in product.Images)
                 {
+                    Console.WriteLine(image.Url);
                     Console.WriteLine(image.Url2);
+                }
+                Console.WriteLine("Descriptions:");
+                foreach (var description in product.ShortDescriptions)
+                {
+                    Console.WriteLine($"In {description.Language}");
+                    Console.WriteLine(description.Text);
+                }
+                foreach (var description in product.LongDescriptions)
+                {
+                    Console.WriteLine($"In {description.Language}");
+                    Console.WriteLine(description.Text);
                 }
 
                 Console.WriteLine("Do you want to add this product to your offer? (yes/no)");
