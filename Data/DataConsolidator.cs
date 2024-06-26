@@ -13,8 +13,8 @@ namespace XMLViewer.Data
         public List<Product> ConsolidateData(string dataFolder)
         {
             var allProducts = new List<Product>();
-            //var filePaths = Directory.GetFiles(dataFolder, "*.xml");
-            var filePaths = Directory.GetFiles(dataFolder, "dostawca1plik2.xml");
+            var filePaths = Directory.GetFiles(dataFolder, "*.xml");
+            //var filePaths = Directory.GetFiles(dataFolder, "dostawca1plik2.xml");
 
             foreach (var filePath in filePaths)
             {

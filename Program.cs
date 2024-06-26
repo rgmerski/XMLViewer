@@ -17,12 +17,11 @@ namespace XMLViewer
             {
                 Console.WriteLine($"ID: {product.Id}");
                 Console.WriteLine($"Price: {product.Price.Gross} PLN");
-                Console.WriteLine($"URL: {product.Card.Url}");
 
                 Console.WriteLine("Images:");
                 foreach (var image in product.Images)
                 {
-                    Console.WriteLine(image.Url);
+                    Console.WriteLine(image.Url2);
                 }
 
                 Console.WriteLine("Do you want to add this product to your offer? (yes/no)");

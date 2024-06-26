@@ -35,7 +35,8 @@ namespace XMLViewer.Data
             {
                 //Produkt o danym ID może już istnieć, gdyż mogą to być pliki, gdzie dane są rozłożone - stwórz i tak za każdym razem nowy, potem je połącz
 
-
+                // TODO - obsługa sytuacji, jak nie znajdzie, bo np. są te dane w drugim pliku i potem to połączyć 
+                // pobieranie elementu wcześniej i sprawdzanie nulli, jeśli nie to przypisz
                 var product = new Product
                 {
                     Id = element.Attribute("id")?.Value,
@@ -65,7 +66,7 @@ namespace XMLViewer.Data
                         Id = sizeElement.Attribute("id").Value,
                         CodeProducer = sizeElement.Attribute("code_producer").Value,
                         Code = sizeElement.Attribute("code").Value,
-                        Weight = decimal.Parse(sizeElement.Attribute("weight").Value),
+                        Weight = decimal.Parse(sizeElement.Attribute("weight")?.Value),
                         Stock = new Stock
                         {
                             Id = sizeElement.Element("stock").Attribute("id").Value,
