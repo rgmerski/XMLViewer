@@ -10,10 +10,6 @@ using XMLViewer.ModelWithoutXMLAttrs;
 using System.Xml;
 using XMLViewer.Services;
 
-//using XMLViewer.ModelWithoutXMLAtts;
-
-//using XMLViewer.ModelWithoutXMLAtts;
-//Atts - z konwertera, inne pola
 namespace XMLViewer.Data
 {
     internal class ProductParser

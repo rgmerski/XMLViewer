@@ -112,21 +112,6 @@ namespace XMLViewer.Services
         {
             int w = GetAttributeValueAsInteger(element, "width", -1);
             int h = GetAttributeValueAsInteger(element, "height", -1);
-            /*
-            int w, h;
-          
-            if (!int.TryParse(element.Attribute(xnm + "width").Value, out w))
-            {
-                Console.WriteLine($"Błąd parsowania rozmiarów zdjęcia dla zdjęcia {element.Attribute("url").Value} - szerokość");
-                w = -1;
-            }
-
-            if (!int.TryParse(element.Attribute(xnm + "height").Value, out h))
-            {
-                Console.WriteLine($"Błąd parsowania rozmiarów zdjęcia dla zdjęcia {element.Attribute("url").Value} - wysokość");
-                h = -1;
-            }
-            */
 
             return new Image
             {
