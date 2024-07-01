@@ -1,4 +1,6 @@
-﻿using XMLViewer.Data;
+﻿using System.Diagnostics;
+using System.Net;
+using XMLViewer.Data;
 
 namespace XMLViewer
 {
@@ -13,16 +15,33 @@ namespace XMLViewer
             var consolidator = new DataConsolidator();
             var products = consolidator.ConsolidateData(dataFolder);
 
+
             foreach (var product in products)
             {
                 Console.WriteLine($"ID: {product.Id}");
                 Console.WriteLine($"Price: {product.Price.Gross}");
                 Console.WriteLine("Images:");
+
                 foreach (var image in product.Images)
                 {
+                    // Pobierz zdjęcia
+                    string localPath = DownloadImage(image.Url);
+                    if (!string.IsNullOrEmpty(localPath))
+                    {
+                        OpenImage(localPath);
+                    }
+                    if (image.Url2 != null)
+                    {
+                        string localPath2 = DownloadImage(image.Url2);
+                        if (!string.IsNullOrEmpty(localPath2))
+                        {
+                            OpenImage(localPath2);
+                        }
+                    }
                     Console.WriteLine(image.Url);
                     Console.WriteLine(image.Url2);
                 }
+
                 Console.WriteLine("Descriptions:");
                 foreach (var description in product.ShortDescriptions)
                 {
@@ -43,12 +62,44 @@ namespace XMLViewer
                 }
             }
 
-            //var productService = new ProductService(products);
-            //productService.DisplayProducts();
+        }
 
-            //Console.WriteLine("Enter the ID of the product to flag as suitable for our offer:");
-            //int productId = int.Parse(Console.ReadLine());
-            //productService.FlagProduct(productId);
+
+        // Pobierz zdjęcia i je uruchom
+        static string DownloadImage(string url)
+        {
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    string fileName = Path.GetFileName(new Uri(url).LocalPath);
+                    string localPath = Path.Combine(Path.GetTempPath(), fileName);
+                    client.DownloadFile(url, localPath);
+                    return localPath;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Możliwa błędna obsługa błędu - pliki się pobierają i uruchamiają
+                //Console.WriteLine($"Could not download image {url}: {ex.Message}");
+                return null;
+            }
+        }
+
+        static void OpenImage(string imagePath)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = imagePath,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Could not open image {imagePath}: {ex.Message}");
+            }
         }
     }
 }

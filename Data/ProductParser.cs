@@ -60,6 +60,13 @@ namespace XMLViewer.Data
                     product.Images.Add(image);
                 }
 
+                // Zdjęcia również zapisane są w elemencie o nazwie photos
+                foreach (var imageElement in element.Descendants("photo"))
+                {
+                    var image = Parser.PhotosParser(imageElement);
+                    product.Images.Add(image);
+                }
+
                 // Poniższe parsery zostawiam, ponieważ są krótkie
                 foreach (var parameterElement in element.Descendants("parameter"))
                 {

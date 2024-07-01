@@ -123,5 +123,13 @@ namespace XMLViewer.Services
                 Height = h,
             };
         }
+
+        public static Image PhotosParser(XElement element)
+        {
+            return new Image
+            {
+                Url = element.Value
+            };
+        }
     }
 }
