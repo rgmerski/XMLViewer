@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace XMLViewer.ModelWithoutXMLAttrs
 {
@@ -21,6 +22,22 @@ namespace XMLViewer.ModelWithoutXMLAttrs
         public List<Description> LongDescriptions { get; set; }
         public List<Image> Images { get; set; }
         public List<Parameter> Parameters { get; set; }
+
+
+        public void Merge(Product other)
+        {
+            if (!other.LongDescriptions.Any()) LongDescriptions = other.LongDescriptions;
+            if (!other.ShortDescriptions.Any()) ShortDescriptions = other.ShortDescriptions;
+            if (other.Price != null) Price = other.Price;
+
+            foreach (var image in other.Images)
+            {
+                if (!Images.Any(i => i.Url == image.Url))
+                {
+                    Images.Add(image);
+                }
+            }
+        }
     }
     
     public class Price
